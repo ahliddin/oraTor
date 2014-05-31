@@ -11,10 +11,18 @@
        
         <link rel="stylesheet" href="styles/main.css">
         <!-- endbuild -->
+
     </head>
     <body data-spy="scroll" data-target="#sidebar">
+       
+        <header class="header"> 
+            <figure>
+                <img src="images/logo.png" alt="oraTor" width="200">
+            </figure>
+        </header>
+
         <section id="sidebar" class="sidebar">
-            <ul class="navbar nav nav-list affix" data-spy="affix">
+            <ul class="navbar nav nav-list affix-top" data-spy="affix" data-offset-top="50">
                 <li class="active"><a href="#translator">Translator</a></li>
                 <li><a href="#funzone">FunZone</a></li>
                 <li><a href="#devprogress">DevProgress</a></li>
@@ -22,74 +30,46 @@
         </section>
 
         <div class="container">
-            <h1 class="text-muted">oraTor</h1>
+            <!-- <h1 class="text-muted">oraTor</h1> -->
 
-            <section id='translator' class="jumbotron">
-                <h1>'Allo, 'Allo!</h1>
-                <p class="lead">Always a pleasure scaffolding your apps.</p>
-                <p><a class="btn btn-lg btn-success" href="#">Splendid! <span class="glyphicon glyphicon-ok"></span></a></p>
+            <section  id='translator' class="jumbotron">
+
+                <section class="input">
+                    <select class="form-control lang-input"
+                            data-bind="options:inputLangs">
+                        
+                    </select>
+
+                    <textarea  class="text-input form-control" rows="15" cols="50"></textarea>    
+                </section>                    
+
+                <section class="output">
+                    <select class="form-control lang-output"
+                            data-bind="options: outputLangs">
+                        
+                    </select>
+
+                    <textarea  class="form text-output" rows="15" cols="50" disabled></textarea>    
+                </section>
+
+                <div id="trans-btn">
+                    <button class="btn btn-success btn-sm" > translate </button>
+                </div>
+                
             </section>
 
             <section id="funzone" class="row marketing">
                 <div class="col-lg-6">
-                    <h4>HTML5 Boilerplate</h4>
-                    <p>HTML5 Boilerplate is a professional front-end template for building fast, robust, and adaptable web apps or sites.</p>
-
-
-
-                    <h4>Bootstrap</h4>
-                    <p>Sleek, intuitive, and powerful mobile first front-end framework for faster and easier web development.</p>
-
-<h4>HTML5 Boilerplate</h4>
-                    <p>HTML5 Boilerplate is a professional front-end template for building fast, robust, and adaptable web apps or sites.</p>
-
-
-
-                    <h4>Bootstrap</h4>
-                    <p>Sleek, intuitive, and powerful mobile first front-end framework for faster and easier web development.</p>
-<h4>HTML5 Boilerplate</h4>
-                    <p>HTML5 Boilerplate is a professional front-end template for building fast, robust, and adaptable web apps or sites.</p>
-
-
-
-                    <h4>Bootstrap</h4>
-                    <p>Sleek, intuitive, and powerful mobile first front-end framework for faster and easier web development.</p>
-<h4>HTML5 Boilerplate</h4>
-                    <p>HTML5 Boilerplate is a professional front-end template for building fast, robust, and adaptable web apps or sites.</p>
-
-
-
-                    <h4>Bootstrap</h4>
-                    <p>Sleek, intuitive, and powerful mobile first front-end framework for faster and easier web development.</p>
-<h4>HTML5 Boilerplate</h4>
-                    <p>HTML5 Boilerplate is a professional front-end template for building fast, robust, and adaptable web apps or sites.</p>
-
-
-
-                    <h4>Bootstrap</h4>
-                    <p>Sleek, intuitive, and powerful mobile first front-end framework for faster and easier web development.</p>
-
-
+                   
             </section>
-            <section id="devprogress" class="row marketing">
+
+
+            <section id="devprogress" class="">
                 <div class="col-lg-6">
-                    <h4>HTML5 Boilerplate</h4>
-                    <p>HTML5 Boilerplate is a professional front-end template for building fast, robust, and adaptable web apps or sites.</p>
-
-
-
-                    <h4>Bootstrap</h4>
-                    <p>Sleek, intuitive, and powerful mobile first front-end framework for faster and easier web development.</p>
-
-<h4>HTML5 Boilerplate</h4>
-                    <p>HTML5 Boilerplate is a professional front-end template for building fast, robust, and adaptable web apps or sites.</p>
-
-
-
-                    <h4>Bootstrap</h4>
-                    <p>Sleek, intuitive, and powerful mobile first front-end framework for faster and easier web development.</p>
-<h4>HTML5 Boilerplate</h4>
-                    <p>HTML5 Boilerplate is a professional front-end template for building fast, robust, and adaptable web apps or sites.</p>
+                    <form oninput="processInput(value);">
+                            <img id="progressimg" src=''>
+                        0<input style="width:400px;" type="range" value="0">100%
+                    </form> 
                 </div>
             </section>
 
@@ -103,6 +83,7 @@
         <!-- build:js scripts/vendor.js -->
         <!-- bower:js -->
         <script src="../bower_components/jquery/dist/jquery.js"></script>
+
         <!-- endbower -->
         <!-- endbuild -->
 
@@ -117,6 +98,7 @@
         </script>
 
         <!-- build:js scripts/plugins.js -->
+        <script src="../bower_components/knockout/knockout-3.1.0.js"></script>
         <script src="../bower_components/bootstrap/js/affix.js"></script>
         <script src="../bower_components/bootstrap/js/alert.js"></script>
         <script src="../bower_components/bootstrap/js/dropdown.js"></script>
@@ -132,7 +114,7 @@
         <!-- endbuild -->
 
         <!-- build:js({app,.tmp}) scripts/main.js -->
-        <script src="scripts/main.js"></script>
+        <script src="scripts/orator_ko.js"></script>
         <!-- endbuild -->
 </body>
 </html>
