@@ -23,14 +23,16 @@
 
         <section id="sidebar" class="sidebar">
             <ul class="navbar nav nav-list affix-top" data-spy="affix" data-offset-top="50">
-                <li class="active"><a href="#translator">Translator</a></li>
+                <li class="active"><a href="#container">Translator</a></li>
                 <li><a href="#funzone">FunZone</a></li>
                 <li><a href="#devprogress">DevProgress</a></li>
              </ul>
         </section>
 
-        <div class="container">
+        <div id="container" class="container">
             <!-- <h1 class="text-muted">oraTor</h1> -->
+
+    <!--******************   TRANSLATOR  ****************-->
 
             <section  id='translator' class="jumbotron">
 
@@ -61,23 +63,75 @@
                 
             </section>
 
-            <section id="funzone" class="row marketing">
-                <div class="col-lg-6">
-                   
+    <!--******************   FUNZONE ****************-->
+
+            <section id="funzone" class="funzone">
+                <h2 style="padding:40px;"> Programming Puzzle</h2>
+
+                <figure style="float:left; margin-left:100px">
+                    <img data-bind="attr: {src: 'images/' + funPicture()}" width='300'>
+                </figure>
+                <div data-bind="visible: !showInput()">
+                    <h2 style="color: green;" 
+                        data-bind="visible: guessedWords().length == 3"> Bravo! </h2>
+
+                    <h2 style="color: red;" 
+                        data-bind="visible: guessedWords().length == 10"> Wow, you are good! </h2>
+
+                    <div class="btn-group">
+                        <button class="btn btn-default"
+                                data-bind="click: backToPuzzle, visible: guessedWords().length < 5">
+                                Find the rest! 
+                        </button>
+                        <button class="btn btn-default"
+                                data-bind="click: finishPuzzle">
+                                End the game!
+                        </button>
+                    </div>
+                </div>
+
+                <div class="input-puzzle" data-bind="visible: showInput">
+
+                    <p style="font-size:16px;float:left;text-align:left;"> 
+                        <strong>Find at least 3 words </strong> </br>
+                        <em>(programming languages/frameworks)</em>
+                    </p>
+
+                    <form data-bind="submit: checkPuzzleAnswer">
+                        <input  class="form-control" style="width:180px; font-size:18px; float:left;"  
+                                data-bind="value: puzzleAnswer, valueUpdate: 'afterkeydown'"  maxlength="15">
+
+                        <button class="btn btn-success btn-sm" style="float:left; font-size:15px;"
+                                data-bind="enable: puzzleAnswer().length > 0" type="submit"> Ok
+                        </button>
+                    </form>
+                    <div class="guessed-words">
+                        <div data-bind="foreach: guessedWords" style="list-style-type:none; ">
+                            <li data-bind="text: $data"></li>
+                        </div>
+                    </div>
+                </div>
+            
             </section>
 
+    <!--******************   DEVPROGRESS  ****************-->
 
             <section id="devprogress" class="dev-progress">
-                <div class="col-lg-6">
+                <section>
+                    <h2 class='text-strong'> Project Development Progress </h2>
                     <form oninput="processProgressInput(p.value);">
-                            <img id="progressimg" src='images/default.jpg' width="400">
-                        0<input id="p" style="width:400px;" type="range" value="0">100%
+                        <img id="progressimg" src='images/default.jpg' width="500"> 
+                        <div class="range-bar">
+                            0%&nbsp<input id="p" style="width:500px;" type="range" value="0"> &nbsp100%
+                        </div>
+                        <span id="pValue"> </span>
                     </form> 
-                </div>
+
+                </section>
             </section>
 
             <div class="footer">
-                <p><span class="glyphicon glyphicon-heart"></span> Ahliddin Ibragimov special for Oracle</p>
+                <p> Ahliddin Ibragimov special for Oracle <span class="glyphicon glyphicon-heart"></span></p>
             </div>
 
         </div>
@@ -90,15 +144,6 @@
         <!-- endbower -->
         <!-- endbuild -->
 
-        <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
-        <script>
-            (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
-            function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
-            e=o.createElement(i);r=o.getElementsByTagName(i)[0];
-            e.src='//www.google-analytics.com/analytics.js';
-            r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
-            ga('create','UA-XXXXX-X');ga('send','pageview');
-        </script>
 
         <!-- build:js scripts/plugins.js -->
         <script src="../bower_components/knockout/knockout-3.1.0.js"></script>
