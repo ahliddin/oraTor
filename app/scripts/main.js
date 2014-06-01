@@ -1,1 +1,1 @@
-console.log('\'Allo \'Allo!');
+ko.applyBindings (new OratorViewModel());

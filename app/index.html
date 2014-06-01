@@ -9,10 +9,10 @@
        
         <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.css">
        
-        <link rel="stylesheet" href="styles/main.css">
+        <link rel="stylesheet" href="styles/style.css">
         <!-- endbuild -->
-
     </head>
+
     <body data-spy="scroll" data-target="#sidebar">
        
         <header class="header"> 
@@ -40,7 +40,8 @@
                         
                     </select>
 
-                    <textarea  class="text-input form-control" rows="15" cols="50"></textarea>    
+                    <textarea   class="text-input form-control" rows="15" cols="50"
+                                data-bind="value: textInput"></textarea>    
                 </section>                    
 
                 <section class="output">
@@ -49,11 +50,13 @@
                         
                     </select>
 
-                    <textarea  class="form text-output" rows="15" cols="50" disabled></textarea>    
+                    <textarea   class="form text-output" rows="15" cols="50" disabled
+                                data-bind="text: textOutput"></textarea>    
                 </section>
 
                 <div id="trans-btn">
-                    <button class="btn btn-success btn-sm" > translate </button>
+                    <button class="btn btn-success btn-sm" 
+                            data-bind="click: translate"> translate </button>
                 </div>
                 
             </section>
@@ -64,11 +67,11 @@
             </section>
 
 
-            <section id="devprogress" class="">
+            <section id="devprogress" class="dev-progress">
                 <div class="col-lg-6">
-                    <form oninput="processInput(value);">
-                            <img id="progressimg" src=''>
-                        0<input style="width:400px;" type="range" value="0">100%
+                    <form oninput="processProgressInput(p.value);">
+                            <img id="progressimg" src='images/default.jpg' width="400">
+                        0<input id="p" style="width:400px;" type="range" value="0">100%
                     </form> 
                 </div>
             </section>
@@ -113,8 +116,14 @@
         <script src="../bower_components/bootstrap/js/tab.js"></script>
         <!-- endbuild -->
 
+        <script src="scripts/OratorDataModel.js"></script>
+        <script src="scripts/OratorViewModel.js"></script>
         <!-- build:js({app,.tmp}) scripts/main.js -->
-        <script src="scripts/orator_ko.js"></script>
+        <script src="scripts/main.js"></script>
+        <script src="scripts/devprogress.js"></script>
+
+        
+        
         <!-- endbuild -->
 </body>
 </html>
