@@ -4,39 +4,42 @@ function OratorDataModel () {
 	//var self = this;
 
 	this.apertiumLangPairs = function (init) {
-		
-		$.ajax({
+		self = this;
+
+		self.langsMap = {};
+
+		var promise = $.ajax({
 		    url: 'http://api.apertium.org/json/listPairs',
 		    type: 'GET',
 		   	crossDomain: true,
 		    async: false,
-		    dataType: 'jsonp',
-		    success: function(data) { 
-		    	var langsMap = {};
+		    dataType: 'jsonp'		    
+		    //beforeSend: setHeader
+		});
+
+		promise.done( function(data) { 
 		    	var arr = data.responseData;
 				for (var i=0; i<arr.length; i++) {
 		    		
 		    		var key = arr[i].sourceLanguage;
 		    		var val = arr[i].targetLanguage;
 
-		    		if (typeof langsMap[key] == 'undefined') {
-		    			//alert("undefined");
-		    			langsMap[key] = new Array(val);
+		    		if (typeof self.langsMap[key] == 'undefined') {
+		    			self.langsMap[key] = new Array(val);
 		    		}
 		    		else {
-		    			langsMap[key].push(val);
+		    			self.langsMap[key].push(val);
 		    		}
 		    	}
-		    	console.log(langsMap);
-		    	init (langsMap);
-		    	return data;
+		    	console.log(self.langsMap);
+		    	init (self.langsMap);
+		    	//return data;
 
-		    },
-		    error: function() { alert('Failed!'); }
-		    //beforeSend: setHeader
 		});
 
-		//console.log(data);
+		promise.fail( function() { 
+			alert('Failed!'); 
+		});
 
-	};
+	}
 }

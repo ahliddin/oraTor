@@ -5,7 +5,7 @@ function OratorViewModel () {
  	//*****  the Translator part   *****//
 	var self = this;
 	var dataModel = new OratorDataModel();
-	self.inputLangs = ['ad', 'adf'];
+	self.inputLangs = ko.observableArray([]);
 	//TMP
 	self.outputLangs = ko.observableArray();
 	self.textInput = ko.observable();
@@ -15,13 +15,12 @@ function OratorViewModel () {
 
 	self.init = function (langsMap) {
 		var langs = Object.keys(langsMap);
-		//console.log(langs);
-		self.inputLangs = ko.observableArray(langs);
-		console.log("self.inputLangs " + self.inputLangs());
-		
-		self.outputLangs = ko.observableArray();
-		self.textInput = ko.observable();
-		self.textOutput = ko.observable();
+		console.log(langs);
+		self.inputLangs (langs);
+		//console.log("self.inputLangs " + self.inputLangs());
+		// self.outputLangs = ko.observableArray();
+		// self.textInput = ko.observable();
+		// self.textOutput = ko.observable();
 
 	};
 	

@@ -1,6 +1,7 @@
 'use strict';
-function FunzoneViewModel (puzzle) {
 
+function FunzoneViewModel (puzzle) {
+	self = this;
 //*****  the Puzzle part   *****//
 	self.guessedWords = ko.observableArray([]);
 	self.showInput = ko.observable(true);
@@ -10,7 +11,7 @@ function FunzoneViewModel (puzzle) {
 
 	self.checkPuzzleAnswer = function () {
 		self.puzzleAnswer (self.puzzleAnswer().toUpperCase());
-		var ind = puzzle.indexOf(self.puzzleAnswer())
+		var ind = puzzle.indexOf(self.puzzleAnswer());
 		if ( ind != -1) {
 			self.guessedWords.push(self.puzzleAnswer());
 			puzzle.splice(ind, 1);
@@ -18,7 +19,7 @@ function FunzoneViewModel (puzzle) {
 		}
 		if (self.guessedWords().length > bar) {
 			self.showInput (false);
-			self.funPicture ("clapping_sheldon.gif")
+			self.funPicture ("clapping_sheldon.gif");
 		}
 	};
 
@@ -26,7 +27,7 @@ function FunzoneViewModel (puzzle) {
 		self.funPicture ("puzzle.png");
 		self.showInput (true);
 		bar = bar + puzzle.length;
-	}
+	};
 
 	self.finishPuzzle = function () {
 		self.funPicture ("puzzle.png");
@@ -34,5 +35,5 @@ function FunzoneViewModel (puzzle) {
 		bar = 2;
 		puzzle = self.guessedWords();
 		self.guessedWords([]);	
-	}
+	};
 }
