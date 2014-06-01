@@ -9,4 +9,5 @@ var puzzle=['JAVA',
 			'PASCAL',
 			'ASSEMBLER'];
 
-ko.applyBindings (new OratorViewModel(puzzle));
+ko.applyBindings (new OratorViewModel(), document.getElementById('translator'));
+ko.applyBindings (new FunzoneViewModel(puzzle), document.getElementById('funzone'));

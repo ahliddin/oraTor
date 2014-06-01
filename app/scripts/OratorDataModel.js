@@ -20,7 +20,7 @@ function OratorDataModel () {
 		    		var val = arr[i].targetLanguage;
 
 		    		if (typeof langsMap[key] == 'undefined') {
-		    			alert("undefined");
+		    			//alert("undefined");
 		    			langsMap[key] = new Array(val);
 		    		}
 		    		else {

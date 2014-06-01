@@ -13,5 +13,4 @@ function processProgressInput (val) {
 	}
 	pVal.text (val + ' %');
 
-
 }
