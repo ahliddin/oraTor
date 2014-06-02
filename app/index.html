@@ -40,16 +40,20 @@
                     <select class="form-control lang-input"
                             data-bind="options: inputLangs, selectedOptions: selectedInLangs,
                                        event: {change: updateOutputLangs} ">
-                        
+                    </select>
+                    <select class="form-control lang-input" style='width:130px;'
+                            data-bind="options: prevSearch, selectedOptions: selectedPrevSearch,
+                                       event: {change: updatePrevSearch}, visible: prevSearch().length>1 ">
                     </select>
 
                     <textarea   class="text-input form-control" rows="15" cols="50"
                                 data-bind="value: textInput"></textarea>    
-                </section>                    
+                </section>   
+
 
                 <section class="output">
                     <select class="form-control lang-output"
-                            data-bind="options: outputLangs(), selectedOptions: selectedOutLangs">
+                            data-bind="options: outputLangs, selectedOptions: selectedOutLangs">
                         
                     </select>
 
@@ -61,7 +65,6 @@
                     <button class="btn btn-success btn-sm" 
                             data-bind="click: translate"> translate </button>
                 </div>
-                
             </section>
 
     <!--******************   FUNZONE ****************-->
@@ -132,8 +135,8 @@
             </section>
 
             <div class="footer">
-                <p> Transla<span style="color:black;font-weight:bold;">TOR</span> for <span style="color:red;font-weight:bold;">ORA</span>cle from Ahliddin Ibragimov</p>
-                <p>Powered by Apertium</p>
+                <p> Transla<span style="color:black;font-weight:bold;">TOR</span> for <span style="color:red;font-weight:bold;">ORA</span>cle by Ahliddin Ibragimov</p>
+                <p>Powered by <a href="http://www.apertium.org">Apertium</a></p>
             </div>
 
         </div>
@@ -145,6 +148,8 @@
 
         <!-- endbower -->
         <!-- endbuild -->
+        <!-- data -->
+        <script src="data/ISO-639-2.json"></script>
 
 
         <!-- build:js scripts/plugins.js -->

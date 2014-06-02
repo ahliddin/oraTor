@@ -47,10 +47,10 @@ body {
 }
 
 .jumbotron .input {
-       
     float: left;
     padding: 5px;
     margin-left: 5px;
+    height: 244px;
 }
 
 .jumbotron .input .text-input  {
@@ -65,16 +65,15 @@ body {
 
 .jumbotron .input .lang-input {
     font-size: 12px;
-    width: 80px;
+    width: 90px;
     padding: 10px;
+    display: inline;
 }
 
 .jumbotron .output {
     padding: 5px;
     margin-right: 5px;
     float: right;
-    
-    
 }
 
 .jumbotron .output .text-output {
@@ -92,7 +91,9 @@ body {
 
 .jumbotron .output .lang-output {
     font-size: 12px;
-    width: 80px;
+    width: 90px;
+    margin-top: 9px;
+    margin-bottom: 3px;
 }
 
 .container .funzone {
