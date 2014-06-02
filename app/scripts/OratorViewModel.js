@@ -82,7 +82,6 @@ function OratorViewModel () {
 		self.prevSearch.push(val);
 		localStorage[val] = JSON.stringify(new Array (self.selectedInLangs()[0], self.selectedOutLangs()[0], self.textInput())); 
 
-		console.log("val: " + JSON.parse(localStorage[val])); 
 	};
 
 	function getLangNames (langCodes){
