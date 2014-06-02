@@ -1,20 +1,30 @@
 'use strict';
 
 function OratorDataModel () {
-	//var self = this;
+	self = this;
 
-	this.apertiumLangPairs = function (init) {
-		self = this;
 
-		self.langsMap = {};
+	// self.getApiKey = function (apiSetter) {
+	// 	$.ajax({
+	// 	    url: '../data/api_key.txt',
+	// 	    async: false,
+	// 	    success: funciton (data) {
+	// 	    	apiSetter(data);
+	// 	    }
+	// 	});
+
+	// };
+
+	self.apertiumLangPairs = function (init) {
+		//self = this;
+		var langsMap = {};
 
 		var promise = $.ajax({
-		    url: 'http://api.apertium.org/json/listPairs',
+		    url: 'http://apy.projectjj.com/listPairs',
 		    type: 'GET',
 		   	crossDomain: true,
 		    async: false,
 		    dataType: 'jsonp'		    
-		    //beforeSend: setHeader
 		});
 
 		promise.done( function(data) { 
@@ -24,22 +34,60 @@ function OratorDataModel () {
 		    		var key = arr[i].sourceLanguage;
 		    		var val = arr[i].targetLanguage;
 
-		    		if (typeof self.langsMap[key] == 'undefined') {
-		    			self.langsMap[key] = new Array(val);
+		    		if (typeof langsMap[key] == 'undefined') {
+		    			langsMap[key] = new Array(val);
 		    		}
 		    		else {
-		    			self.langsMap[key].push(val);
+		    			langsMap[key].push(val);
 		    		}
 		    	}
-		    	console.log(self.langsMap);
-		    	init (self.langsMap);
+		    	console.log(langsMap);
+		    	init (langsMap);
 		    	//return data;
 
 		});
 
 		promise.fail( function() { 
-			alert('Failed!'); 
+			alert('Failed to request data from Apertium web service!'); 
 		});
 
 	}
+
+	self.translate = function (inLang, outLang, input, result_callback) {
+		var url = 'http://apy.projectjj.com/translate?langpair=';
+		var query = inLang + '%7C' + outLang + '&q=' + input;
+
+		var promise = $.ajax({
+		    url: url + query,
+		    type: 'GET',
+		   	crossDomain: true,
+		    async: false,
+		    dataType: 'jsonp'		    
+		});
+
+		promise.done (function (data) {
+			console.log(data.responseData.translatedText);
+			if (data.responseStatus == 200) 
+				result_callback (data.responseData.translatedText);
+		});
+		
+		promise.fail (function (){ 
+			console.log("ERROR: failed to request translate API")
+		});
+
+	};
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+

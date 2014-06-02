@@ -38,7 +38,8 @@
 
                 <section class="input">
                     <select class="form-control lang-input"
-                            data-bind="options:inputLangs">
+                            data-bind="options: inputLangs, selectedOptions: selectedInLangs,
+                                       event: {change: updateOutputLangs} ">
                         
                     </select>
 
@@ -48,7 +49,7 @@
 
                 <section class="output">
                     <select class="form-control lang-output"
-                            data-bind="options: outputLangs">
+                            data-bind="options: outputLangs(), selectedOptions: selectedOutLangs">
                         
                     </select>
 
