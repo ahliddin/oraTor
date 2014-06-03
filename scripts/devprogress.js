@@ -1,3 +1,6 @@
+function pageRefresh () {
+	location.reload();
+}
 
 function processProgressInput (val) {
 	var img = $('#progressimg');
