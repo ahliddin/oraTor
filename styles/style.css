@@ -1,0 +1,178 @@
+body {
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.header {
+    margin-left:30px;
+}
+
+.container {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+.container-narrow > hr {
+    margin: 30px 0;
+}
+
+.sidebar {
+    width: 150px;
+    margin-top: 15%;
+    margin-left: 20px;
+    float: left;
+}
+
+.sidebar li.active  {
+    font-weight: bold;
+
+} 
+
+.container .jumbotron {
+    /*text-align: center;*/
+    border-bottom: 1px solid #e5e5e5;
+    padding-top: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 20px;
+    height: 350px;
+}
+
+.jumbotron #trans-btn {
+    text-align: center;
+    vertical-align: center;
+    font-size: 14px;
+    padding: 5px 5px;
+    margin-top: 15%;
+}
+
+.jumbotron .input {
+    float: left;
+    padding: 5px;
+    margin-left: 5px;
+    height: 244px;
+}
+
+.jumbotron .input .text-input  {
+    font-size: 18px;
+    line-height: 18px;
+
+    min-width: 150px;   
+    max-width: 320px;
+    min-height: 100px;
+    max-height: 200px;
+}
+
+.jumbotron .input .lang-input {
+    font-size: 12px;
+    width: 90px;
+    padding: 10px;
+    display: inline;
+}
+
+.jumbotron .output {
+    padding: 5px;
+    margin-right: 5px;
+    float: right;
+}
+
+.jumbotron .output .text-output {
+    background-color: #E4E4E4;
+    font-size: 18px;
+    line-height: 18px;
+    border:0px;
+    padding: 5px;
+
+    min-width: 150px;   
+    max-width: 320px;
+    min-height: 100px;
+    max-height: 200px;
+}
+
+.jumbotron .output .lang-output {
+    font-size: 12px;
+    width: 90px;
+    margin-top: 9px;
+    margin-bottom: 3px;
+}
+
+.container .funzone {
+    background-color: white;
+    text-align: center;
+    height: 400px;
+    /*width: 200px;*/
+}
+
+.funzone .input-puzzle {
+    position: relative;
+    margin-right: 50px;
+    width: 300px;
+    height: 250px;
+    float: right;
+}
+
+.funzone .guessed-words {
+    float:left; 
+    width: 100px; 
+    text-align: left; 
+    margin-top: 20px;
+}
+
+.dev-progress {
+    margin-top: 100px;
+    text-align: center;
+
+}
+
+.dev-progress .range-bar {
+    font-size: 16px;
+    margin: 5px;
+}
+
+
+/* Main marketing message and sign up button */
+
+
+/* Supporting marketing content */
+.marketing {
+    margin: 40px 0;
+}
+
+.marketing p + h4 {
+    margin-top: 28px;
+}
+
+/* Custom page footer */
+.footer {
+    margin-top: 80px;
+    padding-top: 19px;
+
+    color: #777;
+    border-top: 1px solid #e5e5e5;
+}
+
+
+/* Responsive: Portrait tablets and up */
+@media screen and (min-width: 768px) {
+    .container {
+        max-width: 850px;
+    }
+
+    /* Remove the padding we set earlier */
+    .header,
+    .marketing,
+    .footer {
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    /* Space out the masthead */
+    .header {
+        margin-bottom: 30px;
+    }
+    
+    /* Remove the bottom border on the jumbotron for visual effect */
+    .jumbotron {
+        border-bottom: 0;
+    }
+}

@@ -1,0 +1,177 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>oraTor - Translator</title>
+        <meta name="ORATOR - Apertium powered translator" content="">
+        <meta name="viewport" content="width=device-width">
+        
+       
+        <link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.css">
+       
+        <link rel="stylesheet" href="styles/style.css">
+        <!-- endbuild -->
+    </head>
+
+    <body data-spy="scroll" data-target="#sidebar">
+       
+        <header class="header"> 
+            <figure>
+                <img src="images/logo.png" alt="oraTor" width="250">
+            </figure>
+        </header>
+
+        <section id="sidebar" class="sidebar">
+            <ul class="navbar nav nav-list affix-top" data-spy="affix" data-offset-top="50">
+                <li class="active"><a href="#container">Translator</a></li>
+                <li><a href="#funzone">FunZone</a></li>
+                <li><a href="#devprogress">DevProgress</a></li>
+             </ul>
+        </section>
+
+        <div id="container" class="container">
+            <!-- <h1 class="text-muted">oraTor</h1> -->
+
+    <!--******************   TRANSLATOR  ****************-->
+            <!-- <h2 style="padding:40px;"> Translator </h2> -->
+            <section  id='translator' class="jumbotron">
+
+
+                <section class="input">
+                    <select class="form-control lang-input"
+                            data-bind="options: inputLangs, selectedOptions: selectedInLangs,
+                                       event: {change: updateOutputLangs} ">
+                    </select>
+                    <select class="form-control lang-input" style='width:130px;'
+                            data-bind="options: prevSearch, selectedOptions: selectedPrevSearch,
+                                       event: {change: updatePrevSearch}, visible: prevSearch().length>1 ">
+                    </select>
+
+                    <textarea   class="text-input form-control" rows="15" cols="50"
+                                data-bind="value: textInput"></textarea>    
+                </section>   
+
+
+                <section class="output">
+                    <select class="form-control lang-output"
+                            data-bind="options: outputLangs, selectedOptions: selectedOutLangs">
+                        
+                    </select>
+
+                    <textarea   class="form text-output" rows="15" cols="50" disabled
+                                data-bind="text: textOutput"></textarea>    
+                </section>
+
+                <div id="trans-btn">
+                    <button class="btn btn-success btn-sm" 
+                            data-bind="click: translate"> translate </button>
+                </div>
+            </section>
+
+    <!--******************   FUNZONE ****************-->
+
+            <section id="funzone" class="funzone">
+                <h2 style="padding:40px;"> Programming Puzzle</h2>
+
+                <figure style="float:left; margin-left:100px">
+                    <img data-bind="attr: {src: 'images/' + funPicture()}" width='300'>
+                </figure>
+                <div data-bind="visible: !showInput()">
+                    <h2 style="color: green;" 
+                        data-bind="visible: guessedWords().length == 3"> Bravo! </h2>
+
+                    <h2 style="color: red;" 
+                        data-bind="visible: guessedWords().length == 10"> Wow, you are good! </h2>
+
+                    <div class="btn-group">
+                        <button class="btn btn-default"
+                                data-bind="click: backToPuzzle, visible: guessedWords().length < 5">
+                                Find the rest! 
+                        </button>
+                        <button class="btn btn-default"
+                                data-bind="click: finishPuzzle">
+                                End the game!
+                        </button>
+                    </div>
+                </div>
+
+                <div class="input-puzzle" data-bind="visible: showInput">
+
+                    <p style="font-size:16px;float:left;text-align:left;"> 
+                        <strong>Find at least 3 words </strong> </br>
+                        <em>(programming languages/frameworks)</em>
+                    </p>
+
+                    <form data-bind="submit: checkPuzzleAnswer">
+                        <input  class="form-control" style="width:180px; font-size:18px; float:left;"  
+                                data-bind="value: puzzleAnswer, valueUpdate: 'afterkeydown'"  maxlength="15">
+
+                        <button class="btn btn-success btn-sm" style="float:left; font-size:15px;"
+                                data-bind="enable: puzzleAnswer().length > 0" type="submit"> Ok
+                        </button>
+                    </form>
+                    <div class="guessed-words">
+                        <div data-bind="foreach: guessedWords" style="list-style-type:none; ">
+                            <li data-bind="text: $data"></li>
+                        </div>
+                    </div>
+                </div>
+            
+            </section>
+
+    <!--******************   DEVPROGRESS  ****************-->
+
+            <section id="devprogress" class="dev-progress">
+                <section>
+                    <h2 class='text-strong'> Project Development Progress </h2>
+                    <form oninput="processProgressInput(p.value);">
+                        <img id="progressimg" src='images/default.jpg' width="500"> 
+                        <div class="range-bar">
+                            0%&nbsp<input id="p" style="width:500px;" type="range" value="0"> &nbsp100%
+                        </div>
+                        <span id="pValue"> </span>
+                    </form> 
+
+                </section>
+            </section>
+
+            <div class="footer">
+                <p> Transla<span style="color:black;font-weight:bold;">TOR</span> for <span style="color:red;font-weight:bold;">ORA</span>cle by Ahliddin Ibragimov</p>
+                <p>Powered by <a href="http://www.apertium.org">Apertium</a></p>
+            </div>
+
+        </div>
+
+
+        <script src="lib/jquery/dist/jquery.js"></script>
+        <script src="lib/smooth_scrolling.js"></script>
+        <script src="data/ISO-639-2.json"></script>
+
+        <!-- build:js scripts/plugins.js -->
+        <script src="lib/knockout/knockout-3.1.0.js"></script>
+        <script src="lib/bootstrap/js/affix.js"></script>
+      <!-- <script src="lib/bootstrap/js/alert.js"></script>
+         <script src="lib/bootstrap/js/dropdown.js"></script>
+        <script src="lib/bootstrap/js/tooltip.js"></script>
+        <script src="lib/bootstrap/js/modal.js"></script>
+        <script src="lib/bootstrap/js/transition.js"></script>
+        <script src="lib/bootstrap/js/button.js"></script>
+        <script src="lib/bootstrap/js/popover.js"></script>
+        <script src="lib/bootstrap/js/carousel.js"></script>-->
+        <script src="lib/bootstrap/js/scrollspy.js"></script>
+        <script src="lib/bootstrap/js/collapse.js"></script>
+        <script src="lib/bootstrap/js/tab.js"></script>
+        <!-- endbuild -->
+
+        <script src="scripts/OratorDataModel.js"></script>
+        <script src="scripts/OratorViewModel.js"></script>
+        <script src="scripts/FunzoneViewModel.js"></script>
+        <!-- build:js({app,.tmp}) scripts/main.js -->
+        <script src="scripts/main.js"></script>
+        <script src="scripts/devprogress.js"></script>
+
+        
+        
+        <!-- endbuild -->
+</body>
+</html>
