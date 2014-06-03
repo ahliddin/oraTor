@@ -1,5 +1,0 @@
-23:40:43.867 [main] DEBUG o.s.d.r.s.commands.ContextCommands - Cleared context variables...
-23:41:34.864 [Spring Shell] INFO  o.s.d.r.shell.commands.HttpCommands - Sending GET to http://api.apertium.org/json/translate%3Fq=hello%2520world&langpair=en%257Ces using null
-23:41:46.123 [Spring Shell] INFO  o.s.d.r.shell.commands.HttpCommands - Sending GET to http://api.apertium.org/json/'translate%3Fq=hello%2520world&langpair=en%257Ces' using null
-23:42:02.068 [Spring Shell] INFO  o.s.d.r.shell.commands.HttpCommands - Sending GET to http://api.apertium.org/json/'/translate%3Fq=hello%2520world&langpair=en%257Ces' using null
-23:42:15.579 [Spring Shell] INFO  o.s.d.r.shell.commands.HttpCommands - Sending GET to http://api.apertium.org/json/translate%3Fq=hello%2520world&langpair=en%257Ces using null
