@@ -24,6 +24,7 @@ function OratorDataModel () {
 		    type: 'GET',
 		   	crossDomain: true,
 		    async: false,
+			contentType: "application/jsonp; charset=utf-8",
 		    dataType: 'jsonp'		    
 		});
 
@@ -62,13 +63,16 @@ function OratorDataModel () {
 		    type: 'GET',
 		   	crossDomain: true,
 		    async: false,
+			contentType: "application/json; charset=utf-8",
 		    dataType: 'jsonp'		    
 		});
 
 		promise.done (function (data) {
 			console.log(data.responseData.translatedText);
-			if (data.responseStatus == 200) 
+			if (data.responseStatus == 200) {
+				console.log(unescape(JSON.parse('"' + data.responseData.translatedText + '"' )));
 				result_callback (data.responseData.translatedText);
+			}
 		});
 		
 		promise.fail (function (){ 
