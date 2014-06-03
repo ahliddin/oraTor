@@ -36,7 +36,7 @@ function OratorViewModel () {
 
 		self.selectedInLangs(["English"]); // setting up the default lang
 		self.updateOutputLangs();
-
+		self.selectedOutLangs(["Spanish"]); // setting up the default lang
 	};
 
 	self.updateOutputLangs = function () {
