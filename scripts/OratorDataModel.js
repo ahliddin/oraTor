@@ -3,18 +3,6 @@
 function OratorDataModel () {
 	self = this;
 
-
-	// self.getApiKey = function (apiSetter) {
-	// 	$.ajax({
-	// 	    url: '../data/api_key.txt',
-	// 	    async: false,
-	// 	    success: funciton (data) {
-	// 	    	apiSetter(data);
-	// 	    }
-	// 	});
-
-	// };
-
 	self.apertiumLangPairs = function (init) {
 		//self = this;
 		var langsMap = {};
@@ -42,7 +30,7 @@ function OratorDataModel () {
 		    			langsMap[key].push(val);
 		    		}
 		    	}
-		    	console.log(langsMap);
+		    	// console.log(langsMap);
 		    	init (langsMap);
 		    	//return data;
 
@@ -68,9 +56,9 @@ function OratorDataModel () {
 		});
 
 		promise.done (function (data) {
-			console.log(data.responseData.translatedText);
+			// console.log(data.responseData.translatedText);
 			if (data.responseStatus == 200) {
-				console.log(unescape(JSON.parse('"' + data.responseData.translatedText + '"' )));
+				// console.log(unescape(JSON.parse('"' + data.responseData.translatedText + '"' )));
 				result_callback (data.responseData.translatedText);
 			}
 		});
