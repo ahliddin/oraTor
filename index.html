@@ -110,7 +110,7 @@
 
 
                     <textarea   class="text-input form-control" rows="15" cols="50"
-                                data-bind="value: textInput"></textarea>    
+                                data-bind="value: textInput, valueUpdate: 'afterkeydown'"></textarea>    
                 </section>   
 
                 <section class="output">
@@ -125,7 +125,7 @@
 
                 <div id="trans-btn">
                     <button class="btn btn-success btn-sm" 
-                            data-bind="click: translate"> translate </button>
+                            data-bind="enable: textInput().length>0 , click: translate"> translate </button>
                 </div>
             </section>
 

@@ -15,8 +15,8 @@ function OratorViewModel () {
 	self.selectedOutLangs = ko.observableArray();
 
 	//text translated and to be translated
-	self.textInput = ko.observable();
-	self.textOutput = ko.observable();
+	self.textInput = ko.observable('');
+	self.textOutput = ko.observable('');
 
 
 	//previous translations from localStorage
