@@ -1,7 +1,18 @@
+'use strinct';
+
+/**
+ * Refreshes (reloads) the page
+ *
+ */
 function pageRefresh () {
 	location.reload();
 }
 
+/**
+ * Switches/changes the pictures in DevProgress section according to the input
+ * 
+ * @param {number} val The value of the range input
+ */
 function processProgressInput (val) {
 	var img = $('#progressimg');
 	var pVal = $('#pValue');

@@ -1,5 +1,13 @@
 'use strict';
 
+/**
+ * Creates an instance of FunzoneViewModel.
+ *
+ * @constructor
+ * @this {FunzoneViewModel}
+ *
+ */
+
 function FunzoneViewModel (puzzle) {
 	self = this;
 //*****  the Puzzle part   *****//
@@ -9,6 +17,11 @@ function FunzoneViewModel (puzzle) {
 	self.funPicture = ko.observable("puzzle.png");
 	var bar = 2;
 
+	/**
+	 * Checks the correctnes of answer to puzzle
+	 *
+	 * @this {FunzoneViewModel}
+	 */
 	self.checkPuzzleAnswer = function () {
 		self.puzzleAnswer (self.puzzleAnswer().toUpperCase());
 		var ind = puzzle.indexOf(self.puzzleAnswer());
@@ -23,12 +36,22 @@ function FunzoneViewModel (puzzle) {
 		}
 	};
 
+	/**
+	 * Changes back the picture of Sheldon to puzzle
+	 *
+	 * @this {FunzoneViewModel}
+	 */
 	self.backToPuzzle = function () {
 		self.funPicture ("puzzle.png");
 		self.showInput (true);
 		bar = bar + puzzle.length;
 	};
 
+	/**
+	 * Removes the guessed words of puzzle, returns to original state.
+	 *
+	 * @this {FunzoneViewModel}
+	 */
 	self.finishPuzzle = function () {
 		self.funPicture ("puzzle.png");
 		self.showInput (true);
