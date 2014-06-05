@@ -42,14 +42,9 @@
                             data-bind="options: inputLangs, selectedOptions: selectedInLangs,
                                        event: {change: updateOutputLangs} ">
                     </select>
-                   <!--  <select class="form-control lang-input" style='width:130px;'
-                            data-bind="options: prevQueries, selectedOptions: selectedPrevQueries,
-                                       event: {change: updateprevQueries}, visible: prevQueries().length>1 ">
-                    </select> -->
                     <!-- MODAL dialog for previous queries -->
                     <input  type="button" data-toggle="modal" href="#myModal" 
-                            class="btn btn-primary btn-sm" value="Previous queries"
-                            data-bind="visible: prevQueries().length>0">
+                            class="btn btn-primary btn-sm" value="Previous queries">
 
                       <!-- Modal -->
                     <div class="modal fade" id="myModal" role="dialog" 
