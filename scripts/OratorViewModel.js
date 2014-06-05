@@ -21,9 +21,8 @@ function OratorViewModel () {
 
 	//previous translations from localStorage
 	self.prevQueries = ko.observableArray();
-	self.query = ko.computed (function() {
-		return self.prevQueries[0];
-	});
+	self.queryToShow = ko.observable();
+
 
 	self.init = function (langsMap) {
 		
@@ -36,6 +35,7 @@ function OratorViewModel () {
 		self.selectedInLangs(["English"]); // setting up the default lang
 		self.updateOutputLangs();
 		self.selectedOutLangs(["Spanish"]); // setting up the default lang
+
 	};
 
 	self.updateOutputLangs = function () {
@@ -55,21 +55,39 @@ function OratorViewModel () {
 			self.selectedOutLangs ([prev[1]]);
 			self.textInput (prev[2]);
 			self.textOutput ('');
+			self.queryToShow('');
 		}
 
 	};
-	self.getText = function (data) {
-		var prev =  JSON.parse(localStorage[data]);
-		return prev[2];
+
+	self.showQuery = function () {
+		var prev =  JSON.parse(localStorage[this]);
+		var output = '';
+		if (prev[2].length > 40) {
+			output = prev[2].substring(0,37) + "...";
+		}
+		else {
+			output = prev[2];
+		}
+		output += "  (" + prev[0] + "->" + prev[1] + ")";
+		console.log(output);
+		self.queryToShow(output);
 	};
 
 	self.removeQuery = function () {
 		delete window.localStorage[this];
 		self.prevQueries.remove(this);
+		self.queryToShow('');
 	};
+
 	self.clearHistory = function () {
 		self.prevQueries([]);
 		localStorage.clear();
+		self.queryToShow('');
+	};
+
+	self.resQueryToShow = function () {
+		self.queryToShow('');
 	};
 
 	self.translate = function () {

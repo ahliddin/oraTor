@@ -59,22 +59,37 @@
                             <div class="modal-content">
                                 <div class="modal-header">
                                     <button type="button" class="close" data-dismiss="modal" 
-                                            aria-hidden="true">&times;
+                                            data-bind="click: resQueryToShow" aria-hidden="true">&times;
                                     </button>
                                     <h4 class="modal-title">History of translations</h4>
                                 </div>
 
                                 <!-- listing the previous queries -->
-                                <ul class="modal-body" data-bind="foreach: prevQueries">
+                                <ul class="modal-body" style="font-size: 14px; list-style-type:none" 
+                                    data-bind="foreach: prevQueries">
                                     <li>
-                                        <span data-bind="text: $data"> </span>:
-                                        <button class="btn btn-success btn-xs" data-dismiss="modal" 
+                                        <span data-bind="text: $data"> </span>
+                                        <div class="btn-group" style="float:right" >
+                                        
+                                        <button class="btn btn-primary btn-xs"
+                                                data-bind="click: $parent.showQuery">Show</button>
+                                        
+                                        <button class="btn btn-success btn-xs"  data-dismiss="modal" 
                                                 data-bind="click: $parent.selectQuery">Select</button>
+
                                         <button class="btn btn-danger btn-xs" 
                                                 data-bind="click: $parent.removeQuery">Remove</button>
+
+                                        
+                                        </div>
                                     </li>
                                 </ul>
                                 
+                                <div data-bind="visible: queryToShow()" style="height:50px;padding-top:0px">
+                                    <hr>
+                                    <em data-bind="text: queryToShow()" style="margin-left:20px; font-size:14px;"></em>
+                                </div>
+
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-primary"
                                             data-bind="click: clearHistory, visible: prevQueries().length > 0">
@@ -82,12 +97,12 @@
                                     </button>
                                     
                                     <button type="button" class="btn btn-default" data-dismiss="modal"
-                                            data-bind="visible: prevQueries().length >0 ">
+                                            data-bind="visible: prevQueries().length >0, click: resQueryToShow">
                                         Cancel
                                     </button>
 
                                     <button type="button" class="btn btn-primary" data-dismiss="modal"
-                                            data-bind="visible: prevQueries().length == 0">
+                                            data-bind="visible: prevQueries().length == 0, click: resQueryToShow">
                                         Close
                                     </button>
 
