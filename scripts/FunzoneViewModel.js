@@ -21,6 +21,8 @@ function FunzoneViewModel (puzzle) {
 	 * Checks the correctnes of answer to puzzle
 	 *
 	 * @this {FunzoneViewModel}
+	 * @param {void} void No param
+	 * @return {void} void No return value, the UI is updated by KO
 	 */
 	self.checkPuzzleAnswer = function () {
 		self.puzzleAnswer (self.puzzleAnswer().toUpperCase());
